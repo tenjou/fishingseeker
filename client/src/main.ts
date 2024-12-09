@@ -1,6 +1,6 @@
 import { emit } from "./events"
 import { updateEnergy } from "./game/energy"
-import { loadFishingMinigame, updateFishingMinigame } from "./game/minigame"
+import { updateFishingMinigame } from "./game/minigame"
 import "./game/ui/game-view"
 import { loadInput } from "./input"
 import { createState, getState, loadState, saveState } from "./state"
@@ -27,7 +27,6 @@ function load() {
     })
 
     loadInput()
-    loadFishingMinigame()
 
     tPrev = Date.now()
     tLastSave = Date.now()

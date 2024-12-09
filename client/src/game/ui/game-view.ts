@@ -1,8 +1,9 @@
-import { HTMLComponent, setText } from "../../dom"
-import { canFish, fish } from "../fishing"
+import { HTMLComponent } from "../../dom"
 import { getState } from "../../state"
-import { EnergyMax } from "../energy"
 import { CountdownTimerElement } from "../../ui/countdown-timer"
+import { EnergyMax } from "../energy"
+import { canFish, fish } from "../fishing"
+import { startFishing } from "../minigame"
 
 const template = document.createElement("template")
 template.innerHTML = html`
@@ -22,7 +23,8 @@ template.innerHTML = html`
 
         <div class="flex pt-4">
             <div id="fishing-bar" class="relative width-300px height-32px border border-radius">
-                <div id="fishing-paddle" class="absolute width-32px height-100 p-1 border border-radius"></div>
+                <div id="fishing-paddle" class="absolute height-100 bg-blue p-1 border border-radius"></div>
+                <div id="fish-paddle" class="absolute width-24px height-100 bg-gray p-1 border border-radius"></div>
             </div>
         </div>
     </div>
@@ -39,6 +41,7 @@ export class GameViewElement extends HTMLComponent {
         const button = this.getElement("#fish")
         button.onclick = () => {
             fish()
+            startFishing()
         }
 
         this.subscribe("xp-updated", () => this.update())

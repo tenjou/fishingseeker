@@ -44,6 +44,9 @@ button {
     margin-left: 0.5rem;
 }
 
+.width-24px {
+    width: 24px;
+}
 .width-32px {
     width: 32px;
 }
@@ -72,4 +75,11 @@ button {
 }
 .border-radius {
     border-radius: 3px;
+}
+
+.bg-blue {
+    background-color: blue;
+}
+.bg-gray {
+    background-color: gray;
 }
