@@ -18,17 +18,19 @@ let paddlePxPerPercentX = 0
 
 export function startFishing() {
     const paddleWidth = 48
+    const fishWidth = 24
+
+    const fishingBar = document.getElementById("fishing-bar")!
+    fishingBarWidth = fishingBar.clientWidth
 
     fishingPaddleElement = document.getElementById("fishing-paddle")!
     fishingPaddleElement.style.width = `${paddleWidth}px`
 
     fishPaddleElement = document.getElementById("fish-paddle")!
+    fishPaddleElement.style.width = `${fishWidth}px`
 
-    const fishingBar = document.getElementById("fishing-bar")!
-    fishingBarWidth = fishingBar.clientWidth
-
-    fishPxPerPercentX = (fishingBarWidth - paddleWidth) / 100
-    paddlePxPerPercentX = (fishingBarWidth - fishingPaddleElement.clientWidth) / 100
+    paddlePxPerPercentX = (fishingBarWidth - paddleWidth) / 100
+    fishPxPerPercentX = (fishingBarWidth - fishWidth) / 100
 
     fishX = 0
     fishSpeedX = 1

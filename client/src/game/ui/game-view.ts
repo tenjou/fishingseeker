@@ -24,7 +24,7 @@ template.innerHTML = html`
         <div class="flex pt-4">
             <div id="fishing-bar" class="relative width-300px height-32px border border-radius">
                 <div id="fishing-paddle" class="absolute height-100 bg-blue p-1 border border-radius"></div>
-                <div id="fish-paddle" class="absolute width-24px height-100 bg-gray p-1 border border-radius"></div>
+                <div id="fish-paddle" class="absolute height-100 bg-gray p-1 border border-radius"></div>
             </div>
         </div>
     </div>
