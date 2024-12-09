@@ -1,33 +1,13 @@
-import { subscribe } from "../events"
+import { isKeyPressed } from "../input"
 
 const MaxPaddleSpeedX = 30
 
 let fishingPaddleElement: HTMLElement
 let isFishing = true
 let paddleX = 0
-let paddleSpeedX = 0
 
 export function loadFishingMinigame() {
     fishingPaddleElement = document.getElementById("fishing-paddle")!
-
-    subscribe("key-down", (key) => {
-        switch (key) {
-            case "ArrowLeft":
-                paddleSpeedX = -1
-                break
-            case "ArrowRight":
-                paddleSpeedX = 1
-                break
-        }
-    })
-    subscribe("key-up", (key) => {
-        switch (key) {
-            case "ArrowLeft":
-            case "ArrowRight":
-                paddleSpeedX = 0
-                break
-        }
-    })
 }
 
 export function startFishing() {}
@@ -39,7 +19,14 @@ export function updateFishingMinigame(tDelta: number) {
         return
     }
 
-    paddleX += paddleSpeedX * MaxPaddleSpeedX * tDelta
+    let speedX = 0
+    if (isKeyPressed("ArrowLeft") || isKeyPressed("a")) {
+        speedX = -1
+    } else if (isKeyPressed("ArrowRight") || isKeyPressed("d")) {
+        speedX = 1
+    }
+
+    paddleX += speedX * MaxPaddleSpeedX * tDelta
     if (paddleX < 0) {
         paddleX = 0
     }

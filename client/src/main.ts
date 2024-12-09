@@ -2,6 +2,7 @@ import { emit } from "./events"
 import { updateEnergy } from "./game/energy"
 import { loadFishingMinigame, updateFishingMinigame } from "./game/minigame"
 import "./game/ui/game-view"
+import { loadInput } from "./input"
 import { createState, getState, loadState, saveState } from "./state"
 import "./style.css"
 import "./ui/countdown-timer"
@@ -25,6 +26,7 @@ function load() {
         emit("key-up", event.key)
     })
 
+    loadInput()
     loadFishingMinigame()
 
     tPrev = Date.now()
