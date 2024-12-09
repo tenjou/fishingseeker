@@ -21,8 +21,8 @@ template.innerHTML = html`
         <button id="fish">Fish</button>
 
         <div class="flex pt-4">
-            <div class="relative width-300px height-32px border">
-                <div id="fishing-paddle" class="absolute width-32px height-100 p-1 border"></div>
+            <div id="fishing-bar" class="relative width-300px height-32px border border-radius">
+                <div id="fishing-paddle" class="absolute width-32px height-100 p-1 border border-radius"></div>
             </div>
         </div>
     </div>
