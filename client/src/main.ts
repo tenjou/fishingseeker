@@ -1,7 +1,7 @@
 import { emit } from "./events"
 import { updateEnergy } from "./game/energy"
 import { updateFishingMinigame } from "./game/minigame"
-import "./game/ui/game-view"
+import "./game/ui/home-view"
 import { loadInput } from "./input"
 import { createState, getState, loadState, saveState } from "./state"
 import "./style.css"

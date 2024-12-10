@@ -1,15 +1,8 @@
-interface State {
-    name: string
-    xp: number
-    level: number
-    energy: number
-    tCurr: number
-    tEnergyNext: number
-}
+import { SaveFile } from "./types"
 
-let state: State
+let state: SaveFile
 
-export function loadState(newState: State) {
+export function loadState(newState: SaveFile) {
     state = newState
 }
 
@@ -17,14 +10,14 @@ export function getState() {
     return state
 }
 
-export function updateState(updatedState: Partial<State>) {
+export function updateState(updatedState: Partial<SaveFile>) {
     state = {
         ...state,
         ...updatedState,
     }
 }
 
-export function createState(): State {
+export function createState(): SaveFile {
     return {
         name: "Tenjou",
         xp: 0,
@@ -32,6 +25,7 @@ export function createState(): State {
         energy: 10,
         tCurr: 0,
         tEnergyNext: 0,
+        view: "home",
     }
 }
 
