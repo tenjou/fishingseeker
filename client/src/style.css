@@ -19,6 +19,9 @@ button {
 .flex {
     display: flex;
 }
+.column {
+    flex-direction: column;
+}
 
 .p {
     padding: 0.25rem;
@@ -44,6 +47,13 @@ button {
     margin-left: 0.5rem;
 }
 
+.mt-2 {
+    margin-top: 0.5rem;
+}
+.mt-4 {
+    margin-top: 1rem;
+}
+
 .width-24px {
     width: 24px;
 }
@@ -56,6 +66,9 @@ button {
 
 .height-100 {
     height: 100%;
+}
+.height-16px {
+    height: 16px;
 }
 .height-32px {
     height: 32px;

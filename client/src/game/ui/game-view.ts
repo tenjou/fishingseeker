@@ -21,10 +21,16 @@ template.innerHTML = html`
 
         <button id="fish">Fish</button>
 
-        <div class="flex pt-4">
-            <div id="fishing-bar" class="relative width-300px height-32px border border-radius">
-                <div id="fishing-paddle" class="absolute height-100 bg-blue p-1 border border-radius"></div>
-                <div id="fish-paddle" class="absolute height-100 bg-gray p-1 border border-radius"></div>
+        <div class="flex">
+            <div class="flex column pt-4">
+                <div id="fishing-bar" class="relative width-300px height-32px border border-radius">
+                    <div id="fishing-paddle" class="absolute height-100 bg-blue p-1 border border-radius"></div>
+                    <div id="fish-paddle" class="absolute height-100 bg-gray p-1 border border-radius"></div>
+                </div>
+
+                <div id="fishing-progress-bar" class="mt-2 height-16px border">
+                    <div id="fishing-progress" class="height-100 bg-gray"></div>
+                </div>
             </div>
         </div>
     </div>

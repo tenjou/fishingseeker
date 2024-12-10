@@ -3,22 +3,29 @@ import { clamp } from "./../utils"
 
 const MaxPaddleSpeedX = 20
 const MaxFishSpeedX = 10
+const ProgressSpeed = 5
 
 let fishingPaddleElement: HTMLElement
 let fishPaddleElement: HTMLElement
+let progressBarElement: HTMLElement
+let progressElement: HTMLElement
 
 let isFishing = false
 let paddleX = 0
 let fishX = 0
 let fishSpeedX = 0
+let progress = 50
+
+let paddleWidth = 48
+let fishWidth = 24
 
 let fishingBarWidth = 0
 let fishPxPerPercentX = 0
 let paddlePxPerPercentX = 0
 
 export function startFishing() {
-    const paddleWidth = 48
-    const fishWidth = 24
+    progressBarElement = document.getElementById("fishing-progress-bar")!
+    progressElement = document.getElementById("fishing-progress")!
 
     const fishingBar = document.getElementById("fishing-bar")!
     fishingBarWidth = fishingBar.clientWidth
@@ -55,7 +62,8 @@ export function updateFishingMinigame(tDelta: number) {
         fishX = 100
         fishSpeedX = -1
     }
-    const fishPosX = fishX * fishPxPerPercentX
+    const fishMinX = fishX * fishPxPerPercentX
+    const fishMaxX = fishMinX + fishWidth
 
     let speedX = 0
     if (isKeyPressed("ArrowLeft") || isKeyPressed("a")) {
@@ -66,17 +74,24 @@ export function updateFishingMinigame(tDelta: number) {
 
     paddleX += speedX * MaxPaddleSpeedX * tDelta
     paddleX = clamp(paddleX, 0, 100)
-    const paddlePosX = paddleX * paddlePxPerPercentX
+    const paddleMinX = paddleX * paddlePxPerPercentX
+    const paddleMaxX = paddleMinX + paddleWidth
 
-    // fishX += fishSpeedX * (MaxFishSpeedX * fishPxPerPercentX) * tDelta
-    // if(fishX <= 0) {
-    //     fishX = 0
-    //     fishSpeedX = 1
-    // }
-    // else if(fishX >= fishi)
+    if (fishMinX >= paddleMinX && fishMaxX <= paddleMaxX) {
+        progress += ProgressSpeed * tDelta
+        if (progress >= 100) {
+            progress = 100
+        }
+    } else {
+        progress -= ProgressSpeed * tDelta
+        if (progress <= 0) {
+            progress = 0
+        }
+    }
 
-    // paddleX += speedX * (MaxPaddleSpeedX * paddlePxPerPercentX) * tDelta
+    const progressWidth = (progressBarElement.clientWidth / 100) * progress
 
-    fishPaddleElement.style.left = `${fishPosX}px`
-    fishingPaddleElement.style.left = `${paddlePosX}px`
+    fishPaddleElement.style.left = `${fishMinX}px`
+    fishingPaddleElement.style.left = `${paddleMinX}px`
+    progressElement.style.width = `${progressWidth}px`
 }
