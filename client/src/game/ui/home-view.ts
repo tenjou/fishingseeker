@@ -1,31 +1,30 @@
 import { HTMLComponent } from "../../dom"
+import { canFish } from "../../fishing/fishing"
 import { getState } from "../../state"
 import { CountdownTimerElement } from "../../ui/countdown-timer"
+import { selectView } from "../../view"
 import { EnergyMax } from "../energy"
-import { canFish, fish } from "../fishing"
-import { startFishing } from "../minigame"
 
 const template = document.createElement("template")
 template.innerHTML = html`
-    <div class="p-4">
-        <div class="flex">
-            <span>XP</span>
-            <span id="xp-value"></span>
-        </div>
-
-        <div class="flex">
-            <span>Energy</span>
-            <span id="energy-value"></span>
-            <countdown-timer id="energy-timer"></countdown-timer>
-        </div>
-
-        <button id="fish">Fish</button>
+    <div class="flex">
+        <span>XP</span>
+        <span id="xp-value"></span>
     </div>
+
+    <div class="flex">
+        <span>Energy</span>
+        <span id="energy-value"></span>
+        <countdown-timer id="energy-timer"></countdown-timer>
+    </div>
+
+    <button id="fish">Fish</button>
 `
 
-export class GameViewElement extends HTMLComponent {
+export class HomeViewElement extends HTMLComponent {
     constructor() {
         super(template)
+        console.log("cons")
     }
 
     connectedCallback() {
@@ -33,8 +32,9 @@ export class GameViewElement extends HTMLComponent {
 
         const button = this.getElement("#fish")
         button.onclick = () => {
-            fish()
-            startFishing()
+            selectView("fishing")
+            // fish()
+            // startFishing()
         }
 
         this.subscribe("xp-updated", () => this.update())
@@ -58,5 +58,6 @@ export class GameViewElement extends HTMLComponent {
         this.toggleClass("#energy-timer", "hide", tEnergyNext === 0)
     }
 }
+console.log("here")
 
-customElements.define("game-view", GameViewElement)
+customElements.define("home-view", HomeViewElement)

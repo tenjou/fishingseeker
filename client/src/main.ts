@@ -1,11 +1,14 @@
 import { emit } from "./events"
+import { updateFishingMinigame } from "./fishing/minigame"
+import "./fishing/ui/fishing-view"
 import { updateEnergy } from "./game/energy"
-import { updateFishingMinigame } from "./game/minigame"
 import "./game/ui/home-view"
 import { loadInput } from "./input"
 import { createState, getState, loadState, saveState } from "./state"
 import "./style.css"
+import "./ui/back-button"
 import "./ui/countdown-timer"
+import { loadView } from "./view"
 import "./ws"
 
 let tPrev = 0
@@ -16,9 +19,6 @@ function load() {
     const state = createState()
     loadState(state)
 
-    const gameView = document.createElement("game-view")
-    document.body.appendChild(gameView)
-
     window.addEventListener("keydown", (event) => {
         emit("key-down", event.key)
     })
@@ -27,6 +27,7 @@ function load() {
     })
 
     loadInput()
+    loadView(state.view)
 
     tPrev = Date.now()
     tLastSave = Date.now()

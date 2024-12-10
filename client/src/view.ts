@@ -1,6 +1,4 @@
 import { getElement, HTMLComponent, removeAllChildren } from "./dom"
-import "./fishing/ui/fishing-view"
-import "./game/ui/home-view"
 import { getState, updateState } from "./state"
 
 export type ViewType = "home" | "fishing"
@@ -37,7 +35,7 @@ export function selectView(nextView: ViewType, onViewLoad?: () => void) {
     }
 }
 
-export const loadView = (newView: ViewType) => {
+export function loadView(newView: ViewType) {
     updateState({
         view: newView,
     })
