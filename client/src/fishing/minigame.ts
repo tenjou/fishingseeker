@@ -83,12 +83,14 @@ export function updateFishingMinigame(tDelta: number) {
     if (fishMinX >= paddleMinX && fishMaxX <= paddleMaxX) {
         progress += PositiveProgressSpeed * tDelta
         if (progress >= 100) {
+            progress = 100
             fishingSuccessful()
         }
     } else {
         progress -= NegativeProgressSpeed * tDelta
         if (progress <= 0) {
             progress = 0
+            fishingFailed()
         }
     }
 
@@ -101,7 +103,11 @@ export function updateFishingMinigame(tDelta: number) {
 
 function fishingSuccessful() {
     endFishing()
-
     fish()
+    closeView()
+}
+
+function fishingFailed() {
+    endFishing()
     closeView()
 }
