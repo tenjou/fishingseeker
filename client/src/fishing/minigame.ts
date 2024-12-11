@@ -1,9 +1,12 @@
 import { isKeyPressed } from "../input"
+import { closeView } from "../view"
 import { clamp } from "./../utils"
+import { fish } from "./fishing"
 
 const MaxPaddleSpeedX = 20
 const MaxFishSpeedX = 10
-const ProgressSpeed = 5
+const PositiveProgressSpeed = 30
+const NegativeProgressSpeed = 5
 
 let fishingPaddleElement: HTMLElement
 let fishPaddleElement: HTMLElement
@@ -78,12 +81,12 @@ export function updateFishingMinigame(tDelta: number) {
     const paddleMaxX = paddleMinX + paddleWidth
 
     if (fishMinX >= paddleMinX && fishMaxX <= paddleMaxX) {
-        progress += ProgressSpeed * tDelta
+        progress += PositiveProgressSpeed * tDelta
         if (progress >= 100) {
-            progress = 100
+            fishingSuccessful()
         }
     } else {
-        progress -= ProgressSpeed * tDelta
+        progress -= NegativeProgressSpeed * tDelta
         if (progress <= 0) {
             progress = 0
         }
@@ -94,4 +97,11 @@ export function updateFishingMinigame(tDelta: number) {
     fishPaddleElement.style.left = `${fishMinX}px`
     fishingPaddleElement.style.left = `${paddleMinX}px`
     progressElement.style.width = `${progressWidth}px`
+}
+
+function fishingSuccessful() {
+    endFishing()
+
+    fish()
+    closeView()
 }
