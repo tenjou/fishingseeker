@@ -1,4 +1,4 @@
-export type EventType = "key-up" | "key-down" | "fish" | "xp-updated" | "energy-updated"
+export type EventType = "key-up" | "key-down" | "fish" | "xp-updated" | "energy-updated" | "fishing-success" | "fishing-failed"
 
 export type EventCallbackFunc = (payload: any, amount: number) => void
 

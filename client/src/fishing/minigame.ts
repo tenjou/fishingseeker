@@ -1,5 +1,5 @@
+import { emit } from "../events"
 import { isKeyPressed } from "../input"
-import { closeView } from "../view"
 import { clamp } from "./../utils"
 import { fish } from "./fishing"
 
@@ -42,10 +42,11 @@ export function startFishing() {
     paddlePxPerPercentX = (fishingBarWidth - paddleWidth) / 100
     fishPxPerPercentX = (fishingBarWidth - fishWidth) / 100
 
+    isFishing = true
+    progress = 50
+    paddleX = 0
     fishX = 0
     fishSpeedX = 1
-
-    isFishing = true
 }
 
 export function endFishing() {
@@ -104,10 +105,12 @@ export function updateFishingMinigame(tDelta: number) {
 function fishingSuccessful() {
     endFishing()
     fish()
-    closeView()
+
+    emit("fishing-success")
 }
 
 function fishingFailed() {
     endFishing()
-    closeView()
+
+    emit("fishing-failed")
 }

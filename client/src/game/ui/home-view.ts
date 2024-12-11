@@ -24,7 +24,6 @@ template.innerHTML = html`
 export class HomeViewElement extends HTMLComponent {
     constructor() {
         super(template)
-        console.log("cons")
     }
 
     connectedCallback() {
@@ -58,6 +57,5 @@ export class HomeViewElement extends HTMLComponent {
         this.toggleClass("#energy-timer", "hide", tEnergyNext === 0)
     }
 }
-console.log("here")
 
 customElements.define("home-view", HomeViewElement)
