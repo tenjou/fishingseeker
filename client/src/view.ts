@@ -9,10 +9,10 @@ const HandleLoad: Partial<Record<ViewType, () => void>> = {}
 
 const HandleUnload: Partial<Record<ViewType, () => void>> = {}
 
-export function selectView(nextView: ViewType, onViewLoad?: () => void) {
+export function selectView(nextView: ViewType, onViewLoad?: () => void, force?: boolean) {
     const { view } = getState()
 
-    if (view === nextView) {
+    if (view === nextView && !force) {
         return
     }
 

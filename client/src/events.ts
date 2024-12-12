@@ -7,7 +7,10 @@ export interface EventCallbackInfo {
     callback: EventCallbackFunc
 }
 
-const ignoredEvents: Partial<Record<EventType, boolean>> = {}
+const ignoredEvents: Partial<Record<EventType, boolean>> = {
+    "key-up": true,
+    "key-down": true,
+}
 const subscribers: Partial<Record<EventType, EventCallbackFunc[]>> = {}
 let subscriberWatcher: ((info: EventCallbackInfo) => void) | null = null
 

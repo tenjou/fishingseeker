@@ -1,5 +1,6 @@
 import { HTMLComponent } from "../../dom"
 import { getState } from "../../state"
+import { selectView } from "../../view"
 
 const template = document.createElement("template")
 template.className = "flex column gap-2"
@@ -14,7 +15,10 @@ template.innerHTML = html`
         <div id="size"></div>
     </div>
 
-    <close-button></close-button>
+    <div class="flex gap-2">
+        <button id="fish-again">Fish Again</button>
+        <close-button></close-button>
+    </div>
 `
 
 export class FishingResultsElement extends HTMLComponent {
@@ -27,6 +31,8 @@ export class FishingResultsElement extends HTMLComponent {
 
         this.setText("#name", fishingResult.fishId)
         this.setText("#size", fishingResult.size.toFixed(2))
+
+        this.getElement("#fish-again").onclick = () => selectView("fishing", undefined, true)
     }
 }
 
