@@ -30,6 +30,7 @@ export function createState(): SaveFile {
             fishId: "",
             size: 0,
         },
+        codex: {},
     }
 }
 

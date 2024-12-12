@@ -1,3 +1,4 @@
+import { updateFishingCodexEntry } from "../codex/codex-service"
 import { emit } from "../events"
 import { isKeyPressed } from "../input"
 import { clamp, randomNumber } from "../math/utils"
@@ -104,14 +105,17 @@ export function updateFishingMinigame(tDelta: number) {
 }
 
 function fishingSuccessful() {
+    const fishId = "fish"
     const size = generateFishSize()
 
     updateState({
         fishingResult: {
-            fishId: "fish",
+            fishId,
             size,
         },
     })
+
+    updateFishingCodexEntry(fishId, size)
 
     endFishing()
     fish()

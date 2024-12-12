@@ -1,3 +1,4 @@
+import { CodexEntry } from "./codex/codex-types"
 import { ViewType } from "./view"
 
 export interface SaveFile {
@@ -12,4 +13,5 @@ export interface SaveFile {
         fishId: string
         size: number
     }
+    codex: Record<string, CodexEntry>
 }
