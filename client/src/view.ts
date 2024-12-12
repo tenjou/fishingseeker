@@ -1,7 +1,7 @@
 import { getElement, HTMLComponent, removeAllChildren } from "./dom"
 import { getState, updateState } from "./state"
 
-export type ViewType = "home" | "fishing"
+export type ViewType = "home" | "fishing" | "codex"
 
 let prevView: ViewType = "home"
 
@@ -50,6 +50,9 @@ export function loadView(newView: ViewType) {
             break
         case "fishing":
             viewElement = document.createElement("fishing-view") as HTMLComponent
+            break
+        case "codex":
+            viewElement = document.createElement("codex-view") as HTMLComponent
             break
     }
 

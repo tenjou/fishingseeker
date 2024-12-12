@@ -1,4 +1,4 @@
-import { FishConfigs, FishKeys } from "../configs/fish-config"
+import { FishConfigs, FishKeys } from "../configs/fish-configs"
 import { emit } from "../events"
 import { getEnergy, useEnergy } from "../game/energy"
 import { addXp } from "../game/xp"

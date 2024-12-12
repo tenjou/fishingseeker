@@ -1,5 +1,4 @@
 export type EventType = "key-up" | "key-down" | "fish" | "xp-updated" | "energy-updated" | "fishing-success" | "fishing-failed"
-
 export type EventCallbackFunc = (payload: any, amount: number) => void
 
 export interface EventCallbackInfo {
@@ -12,9 +11,10 @@ const ignoredEvents: Partial<Record<EventType, boolean>> = {
     "key-down": true,
 }
 const subscribers: Partial<Record<EventType, EventCallbackFunc[]>> = {}
+
 let subscriberWatcher: ((info: EventCallbackInfo) => void) | null = null
 
-export const subscribe = (type: EventType, callback: EventCallbackFunc): EventCallbackFunc => {
+export function subscribe(type: EventType, callback: EventCallbackFunc): EventCallbackFunc {
     const funcs = subscribers[type]
     if (funcs) {
         funcs.push(callback as EventCallbackFunc)
@@ -29,7 +29,7 @@ export const subscribe = (type: EventType, callback: EventCallbackFunc): EventCa
     return callback
 }
 
-export const unsubscribe = (type: EventType, callback: EventCallbackFunc) => {
+export function unsubscribe(type: EventType, callback: EventCallbackFunc) {
     const funcs = subscribers[type]
     if (!funcs) {
         return
@@ -44,7 +44,7 @@ export const unsubscribe = (type: EventType, callback: EventCallbackFunc) => {
     funcs.pop()
 }
 
-export const emit = (type: EventType, payload: unknown = undefined, amount: number = 0) => {
+export function emit(type: EventType, payload: unknown = undefined, amount: number = 0) {
     if (!ignoredEvents[type]) {
         console.log(type, "->", payload, amount)
     }
@@ -59,6 +59,6 @@ export const emit = (type: EventType, payload: unknown = undefined, amount: numb
     }
 }
 
-export const watchSubscribers = (func: (info: EventCallbackInfo) => void | null) => {
+export function watchSubscribers(func: (info: EventCallbackInfo) => void | null) {
     subscriberWatcher = func
 }

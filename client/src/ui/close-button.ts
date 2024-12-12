@@ -18,6 +18,12 @@ export class CloseButton extends HTMLComponent {
         this.onclick = () => {
             closeView()
         }
+
+        this.subscribe("key-down", (key) => {
+            if (key === "Escape") {
+                closeView()
+            }
+        })
     }
 }
 

@@ -1,3 +1,4 @@
+import "./codex/ui/codex-view"
 import { emit } from "./events"
 import { updateFishingMinigame } from "./fishing/minigame"
 import "./fishing/ui/fishing-view"
@@ -10,7 +11,6 @@ import "./ui/back-button"
 import "./ui/close-button"
 import "./ui/countdown-timer"
 import { loadView } from "./view"
-import "./ws"
 
 let tPrev = 0
 let tLastSave = 0

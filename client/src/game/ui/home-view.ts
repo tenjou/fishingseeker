@@ -8,6 +8,10 @@ import { EnergyMax } from "../energy"
 const template = document.createElement("template")
 template.className = "flex column gap-2"
 template.innerHTML = html`
+    <div class="flex gap-2">
+        <button id="button-codex">Codex</button>
+    </div>
+
     <div class="flex">
         <span>XP</span>
         <span id="xp-value"></span>
@@ -32,8 +36,10 @@ export class HomeViewElement extends HTMLComponent {
     connectedCallback() {
         super.connectedCallback()
 
-        const button = this.getElement("#fish")
-        button.onclick = () => {
+        this.getElement("#button-codex").onclick = () => {
+            selectView("codex")
+        }
+        this.getElement("#fish").onclick = () => {
             selectView("fishing")
         }
 
