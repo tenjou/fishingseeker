@@ -1,8 +1,8 @@
 import { FishConfigs, FishKeys } from "../configs/fish-config"
 import { emit } from "../events"
-import { randomItem } from "../utils"
-import { addXp } from "../game/xp"
 import { getEnergy, useEnergy } from "../game/energy"
+import { addXp } from "../game/xp"
+import { randomItem } from "../math/utils"
 
 export function fish() {
     if (!canFish()) {

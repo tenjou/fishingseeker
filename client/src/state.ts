@@ -26,6 +26,10 @@ export function createState(): SaveFile {
         tCurr: 0,
         tEnergyNext: 0,
         view: "home",
+        fishingResult: {
+            fishId: "",
+            size: 0,
+        },
     }
 }
 

@@ -8,4 +8,8 @@ export interface SaveFile {
     tCurr: number
     tEnergyNext: number
     view: ViewType
+    fishingResult: {
+        fishId: string
+        size: number
+    }
 }

@@ -6,6 +6,7 @@ import { selectView } from "../../view"
 import { EnergyMax } from "../energy"
 
 const template = document.createElement("template")
+template.className = "flex column gap-2"
 template.innerHTML = html`
     <div class="flex">
         <span>XP</span>
@@ -18,7 +19,9 @@ template.innerHTML = html`
         <countdown-timer id="energy-timer"></countdown-timer>
     </div>
 
-    <button id="fish">Fish</button>
+    <div class="flex">
+        <button id="fish">Fish</button>
+    </div>
 `
 
 export class HomeViewElement extends HTMLComponent {
@@ -32,8 +35,6 @@ export class HomeViewElement extends HTMLComponent {
         const button = this.getElement("#fish")
         button.onclick = () => {
             selectView("fishing")
-            // fish()
-            // startFishing()
         }
 
         this.subscribe("xp-updated", () => this.update())

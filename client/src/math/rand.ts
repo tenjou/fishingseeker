@@ -12,8 +12,8 @@ export function mulberry32(seed: number) {
     }
 }
 
-// const defaultSeed = Date.now()
-let defaultSeed = 1685427805898
+const defaultSeed = Date.now()
+// let defaultSeed = 1685427805898
 let currSeed = defaultSeed
 let randInstance = mulberry32(defaultSeed)
 
@@ -30,3 +30,5 @@ export function setSeed(seed: number) {
 export function getSeed() {
     return currSeed
 }
+
+rand()

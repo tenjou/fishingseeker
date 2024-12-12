@@ -1,6 +1,7 @@
 import { emit } from "../events"
 import { isKeyPressed } from "../input"
-import { clamp } from "./../utils"
+import { clamp, randomNumber } from "../math/utils"
+import { updateState } from "../state"
 import { fish } from "./fishing"
 
 const MaxPaddleSpeedX = 20
@@ -103,6 +104,15 @@ export function updateFishingMinigame(tDelta: number) {
 }
 
 function fishingSuccessful() {
+    const size = generateFishSize()
+
+    updateState({
+        fishingResult: {
+            fishId: "fish",
+            size,
+        },
+    })
+
     endFishing()
     fish()
 
@@ -113,4 +123,15 @@ function fishingFailed() {
     endFishing()
 
     emit("fishing-failed")
+}
+
+function generateFishSize() {
+    const MaxRoll = 100000000
+    const ExtraPossibleSize = 0.5
+
+    const roll = randomNumber(0, MaxRoll) / MaxRoll
+    const skewed = Math.pow(roll, 2)
+    const size = 0.6 + skewed * ExtraPossibleSize
+
+    return size
 }
