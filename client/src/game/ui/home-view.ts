@@ -11,12 +11,17 @@ template.innerHTML = html`
         <button id="button-codex">Codex</button>
     </div>
 
-    <div class="flex">
+    <div class="flex gap-2">
         <span>XP</span>
         <span id="xp-value"></span>
     </div>
 
-    <div class="flex">
+    <div class="flex gap-2">
+        <span>Gold</span>
+        <span id="gold-value"></span>
+    </div>
+
+    <div class="flex gap-2">
         <span>Energy</span>
         <span id="energy-value"></span>
         <countdown-timer id="energy-timer"></countdown-timer>
@@ -52,9 +57,10 @@ export class HomeViewElement extends HTMLComponent {
     }
 
     update() {
-        const { energy, tEnergyNext, xp } = getState()
+        const { energy, tEnergyNext, xp, gold } = getState()
 
         this.setText("#xp-value", xp)
+        this.setText("#gold-value", gold)
         this.setText("#energy-value", `${energy}/${EnergyMax}`)
 
         this.getElement<CountdownTimerElement>("#energy-timer").update(tEnergyNext)

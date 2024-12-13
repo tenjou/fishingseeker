@@ -24,12 +24,14 @@ export function createState(): SaveFile {
         xp: 0,
         level: 1,
         energy: 10,
+        gold: 0,
         tCurr: 0,
         tEnergyNext: 0,
         view: "home",
         fishingResult: {
             fishId: "",
             size: 0,
+            gold: 0,
         },
         currZone: "" as ZoneId,
         zones: {

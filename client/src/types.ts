@@ -8,12 +8,14 @@ export interface SaveFile {
     xp: number
     level: number
     energy: number
+    gold: number
     tCurr: number
     tEnergyNext: number
     view: ViewType
     fishingResult: {
         fishId: string
         size: number
+        gold: number
     }
     currZone: ZoneId
     zones: Record<ZoneId, ZoneEntry>

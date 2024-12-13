@@ -1,6 +1,7 @@
 import { updateFishingCodexEntry } from "../codex/codex-service"
 import { ZoneConfigs } from "../configs/zone-configs"
 import { emit } from "../events"
+import { addGold } from "../game/resources"
 import { isKeyPressed } from "../input"
 import { clamp, randomItem, randomNumber } from "../math/utils"
 import { getState, updateState } from "../state"
@@ -111,20 +112,23 @@ function fishingSuccessful() {
     const zoneCfg = ZoneConfigs[currZone]
     const rolledFish = randomItem(zoneCfg.fishes)
     const size = generateFishSize()
+    const gold = 1
 
     updateState({
         fishingResult: {
             fishId: rolledFish.fishId,
             size,
+            gold,
         },
     })
 
+    addGold(gold)
     updateFishingCodexEntry(rolledFish.fishId, size)
 
     endFishing()
     fish()
 
-    emit("fishing-success")
+    emit("fishing-success", rolledFish.fishId)
 }
 
 function fishingFailed() {

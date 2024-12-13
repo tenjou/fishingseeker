@@ -16,6 +16,11 @@ template.innerHTML = html`
     </div>
 
     <div class="flex gap-2">
+        <div>Gold</div>
+        <div id="gold"></div>
+    </div>
+
+    <div class="flex gap-2">
         <button id="fish-again">Fish Again</button>
         <close-button></close-button>
     </div>
@@ -31,6 +36,7 @@ export class FishingResultsElement extends HTMLComponent {
 
         this.setText("#name", fishingResult.fishId)
         this.setText("#size", fishingResult.size.toFixed(2))
+        this.setText("#gold", fishingResult.gold)
 
         this.getElement("#fish-again").onclick = () => selectView("fishing", undefined, true)
     }
