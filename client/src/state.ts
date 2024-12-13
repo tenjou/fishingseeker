@@ -25,6 +25,7 @@ export function createState(): SaveFile {
         level: 1,
         energy: 10,
         gold: 0,
+        power: 0,
         tCurr: 0,
         tEnergyNext: 0,
         view: "home",

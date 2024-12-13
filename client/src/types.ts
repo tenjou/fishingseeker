@@ -9,6 +9,7 @@ export interface SaveFile {
     level: number
     energy: number
     gold: number
+    power: number
     tCurr: number
     tEnergyNext: number
     view: ViewType

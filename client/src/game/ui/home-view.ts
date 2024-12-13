@@ -22,6 +22,11 @@ template.innerHTML = html`
     </div>
 
     <div class="flex gap-2">
+        <span>Power</span>
+        <span id="power"></span>
+    </div>
+
+    <div class="flex gap-2">
         <span>Energy</span>
         <span id="energy-value"></span>
         <countdown-timer id="energy-timer"></countdown-timer>
@@ -57,10 +62,11 @@ export class HomeViewElement extends HTMLComponent {
     }
 
     update() {
-        const { energy, tEnergyNext, xp, gold } = getState()
+        const { energy, tEnergyNext, xp, gold, power } = getState()
 
         this.setText("#xp-value", xp)
         this.setText("#gold-value", gold)
+        this.setText("#power", power)
         this.setText("#energy-value", `${energy}/${EnergyMax}`)
 
         this.getElement<CountdownTimerElement>("#energy-timer").update(tEnergyNext)
