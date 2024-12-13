@@ -1,8 +1,9 @@
 import { updateFishingCodexEntry } from "../codex/codex-service"
+import { ZoneConfigs } from "../configs/zone-configs"
 import { emit } from "../events"
 import { isKeyPressed } from "../input"
-import { clamp, randomNumber } from "../math/utils"
-import { updateState } from "../state"
+import { clamp, randomItem, randomNumber } from "../math/utils"
+import { getState, updateState } from "../state"
 import { fish } from "./fishing"
 
 const MaxPaddleSpeedX = 20
@@ -105,17 +106,20 @@ export function updateFishingMinigame(tDelta: number) {
 }
 
 function fishingSuccessful() {
-    const fishId = "fish"
+    const { currZone } = getState()
+
+    const zoneCfg = ZoneConfigs[currZone]
+    const rolledFish = randomItem(zoneCfg.fishes)
     const size = generateFishSize()
 
     updateState({
         fishingResult: {
-            fishId,
+            fishId: rolledFish.fishId,
             size,
         },
     })
 
-    updateFishingCodexEntry(fishId, size)
+    updateFishingCodexEntry(rolledFish.fishId, size)
 
     endFishing()
     fish()

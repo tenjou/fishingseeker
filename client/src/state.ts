@@ -1,3 +1,4 @@
+import { ZoneId } from "./configs/zone-configs"
 import { SaveFile } from "./types"
 
 let state: SaveFile
@@ -29,6 +30,11 @@ export function createState(): SaveFile {
         fishingResult: {
             fishId: "",
             size: 0,
+        },
+        currZone: "" as ZoneId,
+        zones: {
+            zone_1: {},
+            zone_2: {},
         },
         codex: {},
     }

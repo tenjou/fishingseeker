@@ -1,5 +1,4 @@
 import { HTMLComponent } from "../../dom"
-import { canFish } from "../../fishing/fishing"
 import { getState } from "../../state"
 import { CountdownTimerElement } from "../../ui/countdown-timer"
 import { selectView } from "../../view"
@@ -42,12 +41,12 @@ export class HomeViewElement extends HTMLComponent {
         // }
 
         this.subscribe("xp-updated", () => this.update())
-        this.subscribe("energy-updated", () => {
-            this.update()
+        // this.subscribe("energy-updated", () => {
+        //     this.update()
 
-            const fishingEnabled = canFish()
-            this.toggleClass("#fish", "disabled", !fishingEnabled)
-        })
+        //     const fishingEnabled = canFish()
+        //     this.toggleClass("#fish", "disabled", !fishingEnabled)
+        // })
 
         this.update()
     }
