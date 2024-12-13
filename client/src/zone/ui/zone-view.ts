@@ -15,7 +15,7 @@ template.innerHTML = html`
     </div>
 `
 
-export class ZoneViewEntry extends HTMLComponent {
+export class ZoneViewElement extends HTMLComponent {
     constructor() {
         super(template)
     }
@@ -35,4 +35,4 @@ export class ZoneViewEntry extends HTMLComponent {
     }
 }
 
-customElements.define("zone-view", ZoneViewEntry)
+customElements.define("zone-view", ZoneViewElement)

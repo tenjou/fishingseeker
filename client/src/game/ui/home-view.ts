@@ -8,6 +8,7 @@ const template = document.createElement("template")
 template.className = "flex column gap-2"
 template.innerHTML = html`
     <div class="flex gap-2">
+        <button id="button-shop">Shop</button>
         <button id="button-codex">Codex</button>
     </div>
 
@@ -43,6 +44,9 @@ export class HomeViewElement extends HTMLComponent {
     connectedCallback() {
         super.connectedCallback()
 
+        this.getElement("#button-shop").onclick = () => {
+            selectView("shop")
+        }
         this.getElement("#button-codex").onclick = () => {
             selectView("codex")
         }

@@ -24,7 +24,7 @@ export function createState(): SaveFile {
         xp: 0,
         level: 1,
         energy: 10,
-        gold: 0,
+        gold: 100,
         power: 0,
         tCurr: 0,
         tEnergyNext: 0,
