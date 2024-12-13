@@ -23,9 +23,7 @@ template.innerHTML = html`
         <countdown-timer id="energy-timer"></countdown-timer>
     </div>
 
-    <div class="flex">
-        <button id="fish">Fish</button>
-    </div>
+    <zones-view></zones-view>
 `
 
 export class HomeViewElement extends HTMLComponent {
@@ -39,9 +37,9 @@ export class HomeViewElement extends HTMLComponent {
         this.getElement("#button-codex").onclick = () => {
             selectView("codex")
         }
-        this.getElement("#fish").onclick = () => {
-            selectView("fishing")
-        }
+        // this.getElement("#fish").onclick = () => {
+        //     selectView("fishing")
+        // }
 
         this.subscribe("xp-updated", () => this.update())
         this.subscribe("energy-updated", () => {

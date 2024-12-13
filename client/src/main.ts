@@ -11,6 +11,7 @@ import "./ui/back-button"
 import "./ui/close-button"
 import "./ui/countdown-timer"
 import { loadView } from "./view"
+import "./zone/ui/zones-view"
 
 let tPrev = 0
 let tLastSave = 0

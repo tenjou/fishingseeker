@@ -1,9 +1,11 @@
-interface FishConfig {
-    id: string
+export type FishId = "fish" | "fish_2" | "fish_3" | "fish_4"
+
+export interface FishConfig {
+    id: FishId
     xp: number
 }
 
-export const FishConfigs: Record<string, FishConfig> = {
+export const FishConfigs: Record<FishId, FishConfig> = {
     fish: {
         id: "fish",
         xp: 1,
