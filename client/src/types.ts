@@ -2,7 +2,7 @@ import { FishCodexEntry, ItemCodexEntry } from "./codex/codex-types"
 import { ZoneId } from "./configs/zone-configs"
 import { EquipmentEntry } from "./equipment/equipment-types"
 import { ViewType } from "./view"
-import { ZoneEntry } from "./zone/zones-types"
+import { ZoneEntry } from "./zone/zone-types"
 
 export interface SaveFile {
     name: string

@@ -9,7 +9,7 @@ import { fish } from "./fishing"
 
 const MaxPaddleSpeedX = 20
 const MaxFishSpeedX = 10
-const PositiveProgressSpeed = 30
+const PositiveProgressSpeed = 5
 const NegativeProgressSpeed = 5
 
 let fishingPaddleElement: HTMLElement
@@ -23,7 +23,7 @@ let fishX = 0
 let fishSpeedX = 0
 let progress = 50
 
-let paddleWidth = 48
+let paddleWidth = 20
 let fishWidth = 24
 
 let fishingBarWidth = 0

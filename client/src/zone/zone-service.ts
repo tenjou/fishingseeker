@@ -8,3 +8,13 @@ export function switchZone(zoneId: ZoneId) {
     })
     selectView("zone")
 }
+
+export function isDaylight() {
+    const date = new Date()
+
+    const hour = date.getUTCHours()
+    const day = hour % 4
+    const daylight = day < 2
+
+    return daylight
+}
