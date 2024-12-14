@@ -1,4 +1,4 @@
-import { CodexEntry } from "./codex/codex-types"
+import { FishCodexEntry, ItemCodexEntry } from "./codex/codex-types"
 import { ZoneId } from "./configs/zone-configs"
 import { EquipmentEntry } from "./equipment/equipment-types"
 import { ViewType } from "./view"
@@ -21,7 +21,10 @@ export interface SaveFile {
     }
     currZone: ZoneId
     zones: Record<ZoneId, ZoneEntry>
-    codex: Record<string, CodexEntry>
+    codex: {
+        fish: Record<string, FishCodexEntry>
+        items: Record<string, ItemCodexEntry>
+    }
     equipment: {
         rod: EquipmentEntry | null
         bait: EquipmentEntry | null

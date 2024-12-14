@@ -39,7 +39,10 @@ export function createState(): SaveFile {
             zone_1: {},
             zone_2: {},
         },
-        codex: {},
+        codex: {
+            fish: {},
+            items: {},
+        },
         equipment: {
             bait: null,
             rod: null,

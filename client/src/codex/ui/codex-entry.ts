@@ -1,5 +1,5 @@
 import { HTMLComponent } from "../../dom"
-import { CodexEntry } from "../codex-types"
+import { FishCodexEntry } from "../codex-types"
 
 const template = document.createElement("template")
 template.className = "flex gap-2"
@@ -14,7 +14,7 @@ export class CodexEntryElement extends HTMLComponent {
         super(template)
     }
 
-    load(fishId: string, entry?: CodexEntry) {
+    load(fishId: string, entry?: FishCodexEntry) {
         if (!entry) {
             this.setText("#name", "???")
             return

@@ -1,5 +1,6 @@
 import { ItemId } from "../../configs/item-configs"
 import { HTMLComponent, removeAllChildren } from "../../dom"
+import { getState } from "../../state"
 import "./shop-entry"
 import { ShopEntryElement } from "./shop-entry"
 
@@ -30,12 +31,20 @@ export class ShopViewElement extends HTMLComponent {
         const container = this.getElement("#items")
         removeAllChildren(container)
 
-        this.populateWithItem("basic_rod")
-        this.populateWithItem("willow_rod")
-        this.populateWithItem("steelline_rod")
+        this.populateWithItem("basic_rod", true)
+        this.populateWithItem("willow_rod", true)
+        this.populateWithItem("steelline_rod", true)
     }
 
-    populateWithItem(itemId: ItemId) {
+    populateWithItem(itemId: ItemId, isUnique: boolean) {
+        if (isUnique) {
+            const { codex } = getState()
+
+            if (codex.items[itemId]) {
+                return
+            }
+        }
+
         const shopEntry = new ShopEntryElement()
         this.getElement("#items").appendChild(shopEntry)
         shopEntry.load(itemId)

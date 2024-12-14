@@ -24,12 +24,14 @@ export class CodexViewElement extends HTMLComponent {
     load() {
         const { codex } = getState()
 
+        const fishCodex = codex.fish
+
         const container = this.getElement("#codex-entries")
         this.syncElementEntries("codex-entry", FishKeys.length, container)
         for (let n = 0; n < container.children.length; n += 1) {
             const fishId = FishKeys[n]
             const element = container.children[n] as CodexEntryElement
-            element.load(fishId, codex[fishId])
+            element.load(fishId, fishCodex[fishId])
         }
     }
 }
