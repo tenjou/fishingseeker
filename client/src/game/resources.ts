@@ -18,3 +18,9 @@ export function addGold(amount: number) {
     })
     emit("gold-updated", newGold)
 }
+
+export function haveGold(amountNeeded: number) {
+    const { gold } = getState()
+
+    return gold >= amountNeeded
+}

@@ -1,4 +1,5 @@
 import { HTMLComponent } from "../../dom"
+import "../../equipment/ui/equipment-view"
 import { getState } from "../../state"
 import { CountdownTimerElement } from "../../ui/countdown-timer"
 import { selectView } from "../../view"
@@ -32,6 +33,8 @@ template.innerHTML = html`
         <span id="energy-value"></span>
         <countdown-timer id="energy-timer"></countdown-timer>
     </div>
+
+    <equipment-view></equipment-view>
 
     <zones-view></zones-view>
 `

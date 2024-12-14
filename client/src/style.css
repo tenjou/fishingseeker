@@ -9,11 +9,22 @@ button {
     cursor: pointer;
 }
 
+img {
+    display: block;
+    width: 32px;
+    height: 32px;
+    image-rendering: pixelated;
+}
+
 .relative {
     position: relative;
 }
 .absolute {
     position: absolute;
+}
+
+.bold {
+    font-weight: 600;
 }
 
 .flex {
