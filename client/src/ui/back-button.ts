@@ -1,5 +1,5 @@
 import { HTMLComponent } from "../dom"
-import { backView } from "../view"
+import { selectView } from "../view"
 
 const template = document.createElement("template")
 template.className = "flex"
@@ -16,8 +16,14 @@ export class BackButton extends HTMLComponent {
         super.connectedCallback()
 
         this.onclick = () => {
-            backView()
+            selectView("zone")
         }
+
+        this.subscribe("key-down", (key) => {
+            if (key === "Escape") {
+                selectView("zone")
+            }
+        })
     }
 }
 

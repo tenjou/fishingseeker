@@ -22,7 +22,7 @@ template.innerHTML = html`
 
     <div class="flex gap-2">
         <button id="fish-again">Fish Again</button>
-        <close-button></close-button>
+        <back-button></back-button>
     </div>
 `
 

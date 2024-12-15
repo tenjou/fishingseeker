@@ -7,9 +7,7 @@ export interface FishConfig {
     id: FishId
     power: number
     xp: number
-    conditions: {
-        dayNight: DayNightCondition
-    }
+    dayNight: DayNightCondition
 }
 
 export const FishConfigs: Record<FishId, FishConfig> = {
@@ -17,33 +15,25 @@ export const FishConfigs: Record<FishId, FishConfig> = {
         id: "anchovy",
         power: 100,
         xp: 1,
-        conditions: {
-            dayNight: "any",
-        },
+        dayNight: "any",
     },
     fish_2: {
         id: "fish_2",
         power: 200,
         xp: 2,
-        conditions: {
-            dayNight: "any",
-        },
+        dayNight: "any",
     },
     fish_3: {
         id: "fish_3",
         power: 300,
         xp: 3,
-        conditions: {
-            dayNight: "any",
-        },
+        dayNight: "any",
     },
     fish_4: {
         id: "fish_4",
         power: 400,
         xp: 4,
-        conditions: {
-            dayNight: "any",
-        },
+        dayNight: "any",
     },
 }
 
