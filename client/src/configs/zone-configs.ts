@@ -1,6 +1,7 @@
 import { FishId } from "./fish-configs"
 
 export type ZoneId = "zone_1" | "zone_2"
+export type ZoneDayNight = "day" | "night"
 export type ZoneWeather = "sunny" | "cloudy" | "rainy"
 
 export interface ZoneConfig {
@@ -20,7 +21,7 @@ export const ZoneConfigs: Record<ZoneId, ZoneConfig> = {
         seed: 10000000,
         fishes: [
             {
-                fishId: "fish",
+                fishId: "anchovy",
             },
             {
                 fishId: "fish_2",

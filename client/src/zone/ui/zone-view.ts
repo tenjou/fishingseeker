@@ -2,7 +2,9 @@ import { ZoneConfigs } from "../../configs/zone-configs"
 import { HTMLComponent } from "../../dom"
 import { getState } from "../../state"
 import { selectView } from "../../view"
-import { getWeather, isDaylight } from "../zone-service"
+import { getDayNight, getWeather } from "../zone-service"
+import "./zone-fish-entry"
+import { ZoneFishEntryElement } from "./zone-fish-entry"
 
 const template = document.createElement("template")
 template.className = "flex column gap-2"
@@ -33,22 +35,26 @@ export class ZoneViewElement extends HTMLComponent {
 
         const zoneCfg = ZoneConfigs[currZone]
 
-        const dayNight = isDaylight() ? "day" : "night"
+        const dayNight = getDayNight()
         const weather = getWeather(zoneCfg)
-
-        const dayNightNext = isDaylight(1) ? "day" : "night"
+        const dayNightNext = getDayNight(1)
         const weatherNext = getWeather(zoneCfg, 1)
 
         this.setText("#name", currZone)
         this.setText("#weather", `${dayNight}, ${weather}`)
         this.setText("#weather-next", `${dayNightNext}, ${weatherNext}`)
 
+        const fishesContainer = this.getElement("#fishes")
+        this.syncElementEntries("zone-fish-entry", zoneCfg.fishes.length, fishesContainer)
+        for (let n = 0; n < zoneCfg.fishes.length; n += 1) {
+            const zoneFishCfg = zoneCfg.fishes[n]
+            const element = fishesContainer.children[n] as ZoneFishEntryElement
+            element.load(zoneFishCfg.fishId)
+        }
+
         this.getElement("#fish").onclick = () => {
             selectView("fishing")
         }
-
-        // const fishesContainer = this.getElement("#fishes")
-        // this.syncElementEntries()
     }
 }
 

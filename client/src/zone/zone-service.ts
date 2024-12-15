@@ -1,4 +1,4 @@
-import { ZoneConfig, ZoneId, ZoneWeather } from "../configs/zone-configs"
+import { ZoneConfig, ZoneDayNight, ZoneId, ZoneWeather } from "../configs/zone-configs"
 import { randomItem } from "../math/utils"
 import { updateState } from "../state"
 import { selectView } from "../view"
@@ -10,7 +10,7 @@ export function switchZone(zoneId: ZoneId) {
     selectView("zone")
 }
 
-export function isDaylight(offsetInHours = 0) {
+export function getDayNight(offsetInHours = 0): ZoneDayNight {
     const date = new Date()
     date.setUTCHours(date.getUTCHours() + offsetInHours)
 
@@ -18,7 +18,7 @@ export function isDaylight(offsetInHours = 0) {
     const mapToDay = hour % 4
     const daylight = mapToDay < 2
 
-    return daylight
+    return daylight ? "day" : "night"
 }
 
 export function getWeather(zoneCfg: ZoneConfig, offsetInHours = 0): ZoneWeather {
