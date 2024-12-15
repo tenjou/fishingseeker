@@ -8,7 +8,12 @@ const template = document.createElement("template")
 template.className = "flex column gap-2"
 template.innerHTML = html`
     <div id="name" class="bold"></div>
-    <div id="weather"></div>
+
+    <div class="flex gap-2">
+        <div id="weather"></div>
+        <div>-></div>
+        <div id="weather-next"></div>
+    </div>
 
     <div id="fishes" class="flex column gap-2"></div>
 
@@ -27,11 +32,16 @@ export class ZoneViewElement extends HTMLComponent {
         const { currZone } = getState()
 
         const zoneCfg = ZoneConfigs[currZone]
+
         const dayNight = isDaylight() ? "day" : "night"
         const weather = getWeather(zoneCfg)
 
+        const dayNightNext = isDaylight(1) ? "day" : "night"
+        const weatherNext = getWeather(zoneCfg, 1)
+
         this.setText("#name", currZone)
         this.setText("#weather", `${dayNight}, ${weather}`)
+        this.setText("#weather-next", `${dayNightNext}, ${weatherNext}`)
 
         this.getElement("#fish").onclick = () => {
             selectView("fishing")
