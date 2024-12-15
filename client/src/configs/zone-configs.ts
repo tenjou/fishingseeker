@@ -5,15 +5,19 @@ export type ZoneWeather = "sunny" | "cloudy" | "rainy"
 
 export interface ZoneConfig {
     id: ZoneId
+    seed: number
     fishes: {
         fishId: FishId
     }[]
     weathers: ZoneWeather[]
 }
 
+const defaultWeathers: ZoneWeather[] = ["sunny", "cloudy", "rainy"]
+
 export const ZoneConfigs: Record<ZoneId, ZoneConfig> = {
     zone_1: {
         id: "zone_1",
+        seed: 10000000,
         fishes: [
             {
                 fishId: "fish",
@@ -22,10 +26,11 @@ export const ZoneConfigs: Record<ZoneId, ZoneConfig> = {
                 fishId: "fish_2",
             },
         ],
-        weathers: ["sunny", "cloudy"],
+        weathers: defaultWeathers,
     },
     zone_2: {
         id: "zone_2",
+        seed: 20000000,
         fishes: [
             {
                 fishId: "fish_3",
@@ -34,7 +39,7 @@ export const ZoneConfigs: Record<ZoneId, ZoneConfig> = {
                 fishId: "fish_4",
             },
         ],
-        weathers: ["sunny", "cloudy"],
+        weathers: defaultWeathers,
     },
 }
 

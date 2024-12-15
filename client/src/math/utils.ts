@@ -1,11 +1,12 @@
-import { rand } from "./rand"
+import { rand, randSeeded } from "./rand"
 
-export function randomNumber(min: number, max: number) {
-    return (rand() * (max - min + 1) + min) << 0
+export function randomNumber(min: number, max: number, seed = 0) {
+    const value = seed ? randSeeded(seed) : rand()
+    return (value * (max - min + 1) + min) << 0
 }
 
-export function randomItem<T>(array: T[] | readonly T[]) {
-    return array[randomNumber(0, array.length - 1)]
+export function randomItem<T>(array: T[] | readonly T[], seed = 0) {
+    return array[randomNumber(0, array.length - 1, seed)]
 }
 
 export function randomIndex<T>(array: T[]) {
