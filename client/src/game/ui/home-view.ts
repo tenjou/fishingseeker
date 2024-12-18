@@ -10,6 +10,7 @@ template.className = "flex column gap-2"
 template.innerHTML = html`
     <div class="flex gap-2">
         <button id="button-shop">Shop</button>
+        <button id="button-quests">Quests</button>
         <button id="button-codex">Codex</button>
     </div>
 
@@ -49,6 +50,9 @@ export class HomeViewElement extends HTMLComponent {
 
         this.getElement("#button-shop").onclick = () => {
             selectView("shop")
+        }
+        this.getElement("#button-quests").onclick = () => {
+            selectView("quests")
         }
         this.getElement("#button-codex").onclick = () => {
             selectView("codex")

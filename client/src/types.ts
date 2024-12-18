@@ -1,4 +1,5 @@
 import { FishCodexEntry, ItemCodexEntry } from "./codex/codex-types"
+import { QuestId } from "./configs/quest-configs"
 import { ZoneId } from "./configs/zone-configs"
 import { EquipmentEntry } from "./equipment/equipment-types"
 import { ViewType } from "./view"
@@ -29,4 +30,5 @@ export interface SaveFile {
         rod: EquipmentEntry | null
         bait: EquipmentEntry | null
     }
+    questsCompleted: Partial<Record<QuestId, boolean>>
 }

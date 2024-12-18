@@ -5,6 +5,7 @@ import { emit } from "../events"
 import { addGold } from "../game/resources"
 import { isKeyPressed } from "../input"
 import { clamp, randomItem, randomNumber } from "../math/utils"
+import { progressFishQuest } from "../quest/quest-service"
 import { getState, updateState } from "../state"
 import { getDayNight, getWeather } from "../zone/zone-service"
 import { fish } from "./fishing"
@@ -19,7 +20,7 @@ let fishPaddleElement: HTMLElement
 let progressBarElement: HTMLElement
 let progressElement: HTMLElement
 
-let currFish: FishId | null = null
+let currFishId: FishId | null = null
 let paddleX = 0
 let fishX = 0
 let fishSpeedX = 0
@@ -41,7 +42,11 @@ export function startFishing() {
 
     const possibleFish = zoneCfg.fishes.filter((entry) => {
         const fishCfg = FishConfigs[entry.fishId]
+
         if (fishCfg.dayNight === "any" || fishCfg.dayNight === dayNight) {
+            return true
+        }
+        if (fishCfg.weather === "any" || fishCfg.weather === weather) {
             return true
         }
 
@@ -49,7 +54,7 @@ export function startFishing() {
     })
 
     console.log(possibleFish)
-    currFish = randomItem(possibleFish).fishId
+    currFishId = randomItem(possibleFish).fishId
 
     progressBarElement = document.getElementById("fishing-progress-bar")!
     progressElement = document.getElementById("fishing-progress")!
@@ -73,11 +78,11 @@ export function startFishing() {
 }
 
 export function endFishing() {
-    currFish = null
+    currFishId = null
 }
 
 export function updateFishingMinigame(tDelta: number) {
-    if (!currFish) {
+    if (!currFishId) {
         return
     }
 
@@ -126,29 +131,33 @@ export function updateFishingMinigame(tDelta: number) {
 }
 
 function fishingSuccessful() {
-    if (!currFish) {
+    if (!currFishId) {
         console.error(`No fish ir currently being fished`)
         return
     }
+
+    const { currZone } = getState()
 
     const size = generateFishSize()
     const gold = 1
 
     updateState({
         fishingResult: {
-            fishId: currFish,
+            fishId: currFishId,
             size,
             gold,
         },
     })
 
     addGold(gold)
-    updateFishingCodexEntry(currFish, size)
+    updateFishingCodexEntry(currFishId, size)
 
     endFishing()
     fish()
 
-    emit("fishing-success", currFish)
+    emit("fishing-success", currFishId)
+
+    progressFishQuest(currZone, currFishId)
 }
 
 function fishingFailed() {

@@ -7,6 +7,7 @@ export type EventType =
     | "fishing-success"
     | "fishing-failed"
     | "gold-updated"
+    | "quest-completed"
 export type EventCallbackFunc = (payload: any, amount: number) => void
 
 export interface EventCallbackInfo {

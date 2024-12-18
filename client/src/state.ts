@@ -47,6 +47,7 @@ export function createState(): SaveFile {
             bait: null,
             rod: null,
         },
+        questsCompleted: {},
     }
 }
 

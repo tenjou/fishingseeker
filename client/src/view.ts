@@ -1,7 +1,7 @@
 import { getElement, HTMLComponent, removeAllChildren } from "./dom"
 import { getState, updateState } from "./state"
 
-export type ViewType = "home" | "fishing" | "codex" | "zone" | "shop"
+export type ViewType = "home" | "fishing" | "codex" | "zone" | "shop" | "quests"
 
 let prevView: ViewType = "home"
 
@@ -45,20 +45,8 @@ export function loadView(newView: ViewType) {
     let viewElement: HTMLComponent
 
     switch (newView) {
-        case "home":
-            viewElement = document.createElement("home-view") as HTMLComponent
-            break
-        case "fishing":
-            viewElement = document.createElement("fishing-view") as HTMLComponent
-            break
-        case "codex":
-            viewElement = document.createElement("codex-view") as HTMLComponent
-            break
-        case "zone":
-            viewElement = document.createElement("zone-view") as HTMLComponent
-            break
-        case "shop":
-            viewElement = document.createElement("shop-view") as HTMLComponent
+        default:
+            viewElement = document.createElement(`${newView}-view`) as HTMLComponent
             break
     }
 

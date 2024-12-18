@@ -5,6 +5,7 @@ import "./fishing/ui/fishing-view"
 import { updateEnergy } from "./game/energy"
 import "./game/ui/home-view"
 import { loadInput } from "./input"
+import "./quest/ui/quests-view"
 import "./shop/ui/shop-view"
 import { createState, getState, loadState, saveState } from "./state"
 import "./style.css"
@@ -43,8 +44,9 @@ function update() {
 
     const tNow = Date.now()
     let tDelta = tNow - tPrev
-    if (!tDelta) {
-        console.log("strange tDelta", tDelta)
+    if (tDelta <= 0) {
+        tPrev = tNow
+        console.log("strange tDelta", tDelta, tNow, tPrev)
         return
     }
 

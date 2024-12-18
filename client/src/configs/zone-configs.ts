@@ -20,12 +20,12 @@ export const ZoneConfigs: Record<ZoneId, ZoneConfig> = {
         id: "zone_1",
         seed: 10000000,
         fishes: [
-            {
-                fishId: "anchovy",
-            },
-            {
-                fishId: "fish_2",
-            },
+            // {
+            //     fishId: "anchovy",
+            // },
+            // {
+            //     fishId: "fish_2",
+            // },
         ],
         weathers: defaultWeathers,
     },

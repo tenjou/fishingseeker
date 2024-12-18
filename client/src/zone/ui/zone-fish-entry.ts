@@ -26,7 +26,7 @@ export class ZoneFishEntryElement extends HTMLComponent {
 
         this.getElement("img").setAttribute("src", `/icons/${fishId}.png`)
         this.setText("#name", fishEntry ? fishId : "???")
-        this.setText("#weather-conditions", fishCfg.dayNight)
+        this.setText("#weather-conditions", `${fishCfg.dayNight}, ${fishCfg.weather}`)
     }
 }
 
