@@ -1,4 +1,3 @@
-import { ZoneId } from "./configs/zone-configs"
 import { SaveFile } from "./types"
 
 let state: SaveFile
@@ -23,18 +22,16 @@ export function createState(): SaveFile {
         name: "Tenjou",
         xp: 0,
         level: 1,
-        energy: 10,
         gold: 100,
         power: 0,
         tCurr: 0,
-        tEnergyNext: 0,
-        view: "home",
+        view: "zone",
         fishingResult: {
             fishId: "",
             size: 0,
             gold: 0,
         },
-        currZone: "" as ZoneId,
+        currZone: "zone_1",
         zones: {
             zone_1: {},
             zone_2: {},

@@ -1,14 +1,13 @@
 import { HTMLComponent } from "../../dom"
 import "../../equipment/ui/equipment-view"
 import { getState } from "../../state"
-import { CountdownTimerElement } from "../../ui/countdown-timer"
 import { selectView } from "../../view"
-import { EnergyMax } from "../energy"
 
 const template = document.createElement("template")
 template.className = "flex column gap-2"
 template.innerHTML = html`
     <div class="flex gap-2">
+        <button id="button-zones">Travel</button>
         <button id="button-shop">Shop</button>
         <button id="button-quests">Quests</button>
         <button id="button-codex">Codex</button>
@@ -36,8 +35,6 @@ template.innerHTML = html`
     </div>
 
     <equipment-view></equipment-view>
-
-    <zones-view></zones-view>
 `
 
 export class HomeViewElement extends HTMLComponent {
@@ -48,6 +45,9 @@ export class HomeViewElement extends HTMLComponent {
     connectedCallback() {
         super.connectedCallback()
 
+        this.getElement("#button-zones").onclick = () => {
+            selectView("zones")
+        }
         this.getElement("#button-shop").onclick = () => {
             selectView("shop")
         }
@@ -73,15 +73,11 @@ export class HomeViewElement extends HTMLComponent {
     }
 
     update() {
-        const { energy, tEnergyNext, xp, gold, power } = getState()
+        const { xp, gold, power } = getState()
 
         this.setText("#xp-value", xp)
         this.setText("#gold-value", gold)
         this.setText("#power", power)
-        this.setText("#energy-value", `${energy}/${EnergyMax}`)
-
-        this.getElement<CountdownTimerElement>("#energy-timer").update(tEnergyNext)
-        this.toggleClass("#energy-timer", "hide", tEnergyNext === 0)
     }
 }
 

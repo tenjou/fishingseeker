@@ -1,5 +1,5 @@
 import { HTMLComponent } from "../../dom"
-import { startFishing } from "../minigame"
+import { startFishing } from "../fishing"
 
 const template = document.createElement("template")
 template.className = "flex column pt-4 gap-2"

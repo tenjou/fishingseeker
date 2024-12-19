@@ -1,12 +1,9 @@
-import { FishId } from "../configs/fish-configs"
 import { QuestConfigs, QuestId } from "../configs/quest-configs"
-import { ZoneConfigs, ZoneId } from "../configs/zone-configs"
+import { ZoneConfigs } from "../configs/zone-configs"
 import { emit } from "../events"
 import { addGold } from "../game/resources"
 import { addXp } from "../game/xp"
 import { getState } from "../state"
-
-export function progressFishQuest(zoneId: ZoneId, fishId: FishId) {}
 
 export function canCompleteQuest(questId: QuestId) {
     const { codex } = getState()

@@ -1,7 +1,7 @@
 import { getElement, HTMLComponent, removeAllChildren } from "./dom"
 import { getState, updateState } from "./state"
 
-export type ViewType = "home" | "fishing" | "codex" | "zone" | "shop" | "quests"
+export type ViewType = "home" | "fishing" | "codex" | "zone" | "shop" | "quests" | "zones"
 
 let prevView: ViewType = "home"
 

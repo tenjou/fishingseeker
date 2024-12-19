@@ -43,4 +43,4 @@ export const FishConfigs: Record<FishId, FishConfig> = {
     },
 }
 
-export const FishKeys = Object.keys(FishConfigs)
+export const FishKeys = Object.keys(FishConfigs) as FishId[]

@@ -1,12 +1,15 @@
 import { FishKeys } from "../../configs/fish-configs"
 import { HTMLComponent } from "../../dom"
 import { getState } from "../../state"
+import { countItems } from "../../utils"
 import "./codex-entry"
 import { CodexEntryElement } from "./codex-entry"
 
 const template = document.createElement("template")
 template.className = "flex column gap-2"
 template.innerHTML = html`
+    <div id="progress"></div>
+
     <div id="codex-entries" class="flex column gap-2"></div>
 
     <close-button></close-button>
@@ -25,6 +28,9 @@ export class CodexViewElement extends HTMLComponent {
         const { codex } = getState()
 
         const fishCodex = codex.fish
+
+        const progress = countItems(FishKeys, (fishId) => !!fishCodex[fishId])
+        this.setText("#progress", `${progress}/${FishKeys.length}`)
 
         const container = this.getElement("#codex-entries")
         this.syncElementEntries("codex-entry", FishKeys.length, container)

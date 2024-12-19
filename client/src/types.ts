@@ -9,11 +9,9 @@ export interface SaveFile {
     name: string
     xp: number
     level: number
-    energy: number
     gold: number
     power: number
     tCurr: number
-    tEnergyNext: number
     view: ViewType
     fishingResult: {
         fishId: string

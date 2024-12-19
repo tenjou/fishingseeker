@@ -9,6 +9,18 @@ export function removeAtIndex<T>(array: T[], index: number) {
     array.pop()
 }
 
+export function countItems<T>(array: T[], func: (item: T) => boolean) {
+    let count = 0
+
+    for (const item of array) {
+        if (func(item)) {
+            count += 1
+        }
+    }
+
+    return count
+}
+
 export function findAndRemoveIndex(array: number[], indexToRemove: number) {
     const indexFound = array.indexOf(indexToRemove)
     if (indexFound === -1) {

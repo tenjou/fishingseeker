@@ -1,8 +1,7 @@
 import "./codex/ui/codex-view"
 import { emit } from "./events"
-import { updateFishingMinigame } from "./fishing/minigame"
+import { updateFishingMinigame } from "./fishing/fishing"
 import "./fishing/ui/fishing-view"
-import { updateEnergy } from "./game/energy"
 import "./game/ui/home-view"
 import { loadInput } from "./input"
 import "./quest/ui/quests-view"
@@ -61,19 +60,10 @@ function update() {
     const timeStep = Math.min(tDelta, 50)
     const timeStepF = 1 / timeStep
 
-    if (timeStep <= 0) {
-        console.log("what")
-    }
-
     while (tAccumulator > timeStep) {
         tAccumulator -= timeStep
         state.tCurr += timeStep
 
-        if (timeStep <= 0) {
-            console.log("what2")
-        }
-
-        updateEnergy()
         updateFishingMinigame(timeStepF)
     }
 

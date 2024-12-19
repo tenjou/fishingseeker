@@ -9,6 +9,8 @@ const template = document.createElement("template")
 template.className = "flex column gap-2"
 template.innerHTML = html`
     <div id="zones-entries" class="flex column gap-2"></div>
+
+    <close-button></close-button>
 `
 
 export class ZonesViewElement extends HTMLComponent {
